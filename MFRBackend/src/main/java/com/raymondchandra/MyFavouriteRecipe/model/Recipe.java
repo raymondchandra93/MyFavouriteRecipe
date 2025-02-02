@@ -1,7 +1,7 @@
 package com.raymondchandra.MyFavouriteRecipe.model;
 
 
-import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -36,8 +36,7 @@ public class Recipe {
 	@Column(name = "recipe_description", columnDefinition = "TEXT")
 	private String recipeDescription;
 	
-//	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-//	// @JoinColumn(name = "recipe_id", nullable = false)
-//	// @JsonBackReference
-//	private List<RecipeIngredient> recipeIngredients;
+	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonBackReference
+	private Set<RecipeIngredient> recipeIngredients;
 }
