@@ -1,7 +1,10 @@
 package com.raymondchandra.MyFavouriteRecipe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -22,10 +25,12 @@ public class RecipeIngredient {
 	@ManyToOne
     @MapsId("recipeId")
     @JoinColumn(name = "recipe_id")
+	@JsonBackReference
     private Recipe recipe;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("ingredientId")
     @JoinColumn(name = "ingredient_id")
+    @JsonBackReference
     private Ingredient ingredient;
 }
