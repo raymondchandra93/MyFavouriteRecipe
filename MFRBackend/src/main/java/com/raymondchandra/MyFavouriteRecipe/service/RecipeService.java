@@ -8,21 +8,23 @@ import org.springframework.stereotype.Service;
 import com.raymondchandra.MyFavouriteRecipe.model.Recipe;
 import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
 import com.raymondchandra.MyFavouriteRecipe.model.mapper.RecipeMapper;
+import com.raymondchandra.MyFavouriteRecipe.model.mapper.UserMapper;
 import com.raymondchandra.MyFavouriteRecipe.repository.RecipeRepository;
+import com.raymondchandra.MyFavouriteRecipe.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class RecipeService {
 
-	private RecipeRepository recipeRepository;
-	private RecipeMapper recipeMapper;
+	private final RecipeRepository recipeRepository;
+	private final RecipeMapper recipeMapper;
 	
 	// Get all recipes as DTOs
 	public List<RecipeDTO> getAllRecipes() {
-		List<Recipe> recipes = recipeRepository.findRecipes();
-//		List<Recipe> recipes = recipeRepository.findAll();
+		List<Recipe> recipes = recipeRepository.findAll();
 
 		System.out.println("Hello Start ----");
 		System.out.println(recipes.toString());
@@ -30,7 +32,7 @@ public class RecipeService {
 		
 		return recipes.stream()
 				.map(recipeMapper::toRecipeDTO) // Using the mapper to convert entities to DTOs
-				.toList();
+				.toList();  
 	}
 
 	// Get a single recipe by ID as DTO

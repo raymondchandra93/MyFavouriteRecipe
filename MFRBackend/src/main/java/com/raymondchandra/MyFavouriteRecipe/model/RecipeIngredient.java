@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "recipeIngredient")
@@ -26,11 +27,13 @@ public class RecipeIngredient {
     @MapsId("recipeId")
     @JoinColumn(name = "recipe_id")
 	@JsonBackReference
+	@ToString.Exclude
     private Recipe recipe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @MapsId("ingredientId")
     @JoinColumn(name = "ingredient_id")
     @JsonBackReference
+    @ToString.Exclude
     private Ingredient ingredient;
 }

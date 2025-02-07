@@ -1,25 +1,3 @@
--- Create Recipe Table
-CREATE TABLE recipe (
-    recipe_id INT PRIMARY KEY,
-    recipe_name VARCHAR(255) NOT NULL,
-    recipe_description TEXT
-);
-
--- Create Ingredient Table
-CREATE TABLE ingredient (
-    ingredient_id INT PRIMARY KEY,
-    ingredient_name VARCHAR(255) NOT NULL
-);
-
--- Create RecipeIngredient Table (Bridging Table)
-CREATE TABLE recipeIngredient (
-    recipe_id INT,
-    ingredient_id INT,
-    FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id),
-    FOREIGN KEY (ingredient_id) REFERENCES ingredient(ingredient_id),
-    PRIMARY KEY (recipe_id, ingredient_id)
-);
-
 -- Insert Data into Recipe Table
 INSERT INTO recipe (recipe_id, recipe_name, recipe_description) VALUES
 (1, 'Spaghetti Bolognese', 'A classic Italian pasta dish with rich meat sauce.'),

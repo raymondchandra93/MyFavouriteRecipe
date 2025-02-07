@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import com.raymondchandra.MyFavouriteRecipe.model.Recipe;
 import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
 
-@Mapper(injectionStrategy = InjectionStrategy.CONSTRUCTOR, componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface RecipeMapper {
 	
 	@Mapping(source = "recipeName", target = "recipeName")

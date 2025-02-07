@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
 import com.raymondchandra.MyFavouriteRecipe.service.RecipeService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/v1/public/recipes")
+@RequiredArgsConstructor
 public class RecipeController {
 
-	private RecipeService recipeService;
-	
-	public RecipeController(RecipeService recipeService) {
-		this.recipeService = recipeService;
-	}	
+	private final RecipeService recipeService;
 	
 	// Get test
 	@GetMapping("/test")
