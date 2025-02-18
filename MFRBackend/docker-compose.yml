@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mfr
+      #MYSQL_USER: user
+      #MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mfr_data_script_13022025.sql:/docker-entrypoint-initdb.d/mfr_data_script_13022025.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-container
+    ports:
+      - "3030:3030"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker   # Activating the docker profile
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/mfr
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - mysql-db
+
+volumes:
+  mysql-data:

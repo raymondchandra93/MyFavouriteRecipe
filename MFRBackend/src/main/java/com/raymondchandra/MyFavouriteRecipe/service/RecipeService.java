@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.raymondchandra.MyFavouriteRecipe.dto.RecipeDTO;
+import com.raymondchandra.MyFavouriteRecipe.mapper.RecipeMapper;
+import com.raymondchandra.MyFavouriteRecipe.mapper.UserMapper;
 import com.raymondchandra.MyFavouriteRecipe.model.Recipe;
-import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
-import com.raymondchandra.MyFavouriteRecipe.model.mapper.RecipeMapper;
-import com.raymondchandra.MyFavouriteRecipe.model.mapper.UserMapper;
 import com.raymondchandra.MyFavouriteRecipe.repository.RecipeRepository;
 import com.raymondchandra.MyFavouriteRecipe.repository.UserRepository;
 

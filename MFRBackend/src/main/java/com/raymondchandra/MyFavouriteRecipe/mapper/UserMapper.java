@@ -1,11 +1,11 @@
-package com.raymondchandra.MyFavouriteRecipe.model.mapper;
+package com.raymondchandra.MyFavouriteRecipe.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import com.raymondchandra.MyFavouriteRecipe.dto.UserDTO;
 import com.raymondchandra.MyFavouriteRecipe.model.User;
-import com.raymondchandra.MyFavouriteRecipe.model.dto.UserDTO;
 
 @Mapper(componentModel = "spring") 
 public interface UserMapper {

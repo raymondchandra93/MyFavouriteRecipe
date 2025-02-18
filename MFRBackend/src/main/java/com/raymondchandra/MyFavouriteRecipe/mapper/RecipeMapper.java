@@ -1,11 +1,11 @@
-package com.raymondchandra.MyFavouriteRecipe.model.mapper;
+package com.raymondchandra.MyFavouriteRecipe.mapper;
 
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.raymondchandra.MyFavouriteRecipe.dto.RecipeDTO;
 import com.raymondchandra.MyFavouriteRecipe.model.Recipe;
-import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
 
 @Mapper(componentModel = "spring")
 public interface RecipeMapper {

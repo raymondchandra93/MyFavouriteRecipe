@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.raymondchandra.MyFavouriteRecipe.model.dto.RecipeDTO;
+import com.raymondchandra.MyFavouriteRecipe.dto.RecipeDTO;
 import com.raymondchandra.MyFavouriteRecipe.service.RecipeService;
 
 import lombok.RequiredArgsConstructor;
