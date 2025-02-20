@@ -1,5 +1,4 @@
 package com.raymondchandra.MyFavouriteRecipe.service;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -13,25 +12,27 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 import com.raymondchandra.MyFavouriteRecipe.dto.UserDTO;
 import com.raymondchandra.MyFavouriteRecipe.exceptions.UserNotFoundException;
+import com.raymondchandra.MyFavouriteRecipe.mapper.UserMapper;
 import com.raymondchandra.MyFavouriteRecipe.model.User;
 import com.raymondchandra.MyFavouriteRecipe.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
-@SpringBootTest
 public class UserServiceTest {
-	
-	@Autowired
-	private UserService userService;
-	
-	@MockitoSpyBean
+		
+	@Mock
 	private UserRepository userRepository;
+
+	@Mock
+	private UserMapper userMapper;
+	
+	@InjectMocks
+	private UserService userService;
 	
 	private User user1;
 	private List<User> users;
@@ -46,11 +47,19 @@ public class UserServiceTest {
 	void getAllUsers_WhenUsersExist_ReturnsUserList() {
 		// Arrange
 		when(userRepository.findAll()).thenReturn(users);
+		when(userMapper.toUserDTO(user1)).thenReturn(new UserDTO("uname1", "upassword1")); // Mock UserDTO conversion
+		
+		for(User user : users) {
+			System.out.println(user);
+		}
 		
 		// Act
 		List<UserDTO> usersDTO = userService.getAllUsers();
 		
 		// Assert
+		for(UserDTO user : usersDTO) {
+			System.out.println(user);
+		}
 		assertNotNull(usersDTO);
 	}
 	
@@ -58,6 +67,7 @@ public class UserServiceTest {
 	void getUser_WhenUserExist_ReturnsUser() {
 		// Arrange
 		when(userRepository.findById(1L)).thenReturn(Optional.of(user1));
+		when(userMapper.toUserDTO(user1)).thenReturn(new UserDTO("uname1", "upassword1")); // Mock UserDTO conversion
 		
 		// Act
 		UserDTO user = userService.getUser(1L);

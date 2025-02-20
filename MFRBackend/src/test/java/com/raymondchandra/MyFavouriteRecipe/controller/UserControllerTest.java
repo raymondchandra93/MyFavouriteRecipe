@@ -15,65 +15,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raymondchandra.MyFavouriteRecipe.dto.UserDTO;
-import com.raymondchandra.MyFavouriteRecipe.model.User;
+import com.raymondchandra.MyFavouriteRecipe.mapper.UserMapper;
 import com.raymondchandra.MyFavouriteRecipe.service.UserService;
 
 @WebMvcTest(UserController.class)
-//@AutoConfigureMockMvc(addFilters = false)
-//@ExtendWith(MockitoExtension.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class UserControllerTest {
-//	@Autowired
-//    private MockMvc mockMvc; 				// MockMvc to simulate HTTP requests
-//
-//	@MockitoBean
-//    private UserService userService; 		// Mocked service
-//	
-////	@MockitoBean
-////	private UserRepository userRepository;
-////
-//    @Autowired
-//    private ObjectMapper objectMapper; 		// For converting objects to JSON
-//
-////	private UserMapper userMapper;
-////    private User createdUser;
-////    private User updatedUser;
-////	
-////	@BeforeEach
-////	void setup() {
-////		// Arrange
-////		createdUser = new User(11L, "john_doe", "password123");
-////		updatedUser = new User(11L, "updated_user", "newpassword");
-////	}
-//    
-//    @Test
-//    void testGetAllUsers() throws Exception {
-//    	
-//    	// Arrange
-////    	User user1 = new User(11L, "john_doe", "password123");
-////    	User user2 = new User(12L, "jane_doe", "password456");
-////    	List<User> userList = Arrays.asList(user1, user2);
-////
-////    	when(userRepository.findAll())
-////    		.thenReturn(userList);
-//
-//    	UserDTO userDTO1 = new UserDTO("john_doe", "password123");
-//    	UserDTO userDTO2 = new UserDTO("john_doe", "password123");
-//    	List<UserDTO> listUserDTO = Arrays.asList(userDTO1, userDTO2);
-//    	
-//    	when(userService.getAllUsers())
-//    		.thenReturn(listUserDTO);    	
-//    	
-//    	// Act & Assert
-//        mockMvc.perform(get("/api/v1/public/users")
-//        			.contentType("application/json"))
-//        		.andDo(print())
-//        		.andExpect(status().isOk());
-//    }
-//    
+	@Autowired
+    private MockMvc mockMvc; 				// MockMvc to simulate HTTP requests
+
+	@MockitoBean
+    private UserService userService; 		// Mocked service
+
+    @Autowired
+    private ObjectMapper objectMapper; 		// For converting objects to JSON
+    
+    @Test
+    void testGetAllUsers() throws Exception {
+    	
+    	// Arrange
+    	UserDTO userDTO1 = new UserDTO("john_doe", "password123");
+    	UserDTO userDTO2 = new UserDTO("jane_doe", "password123");
+    	List<UserDTO> listUserDTO = Arrays.asList(userDTO1, userDTO2);
+    	
+    	when(userService.getAllUsers())
+    		.thenReturn(listUserDTO);    	
+    	
+    	// Act & Assert
+        mockMvc.perform(get("/api/v1/public/users"))
+        	.andDo(print())
+        	.andExpect(status().isOk());
+    }
+    
 //    @Test
 //    void testCreateUser() throws Exception {
 //    	

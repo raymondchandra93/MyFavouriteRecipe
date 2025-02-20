@@ -19,7 +19,7 @@ public class UserService {
 
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
-
+	
 	// Get all users as DTOs
 	public List<UserDTO> getAllUsers() {
 		List<User> users = Optional.ofNullable(userRepository.findAll())
