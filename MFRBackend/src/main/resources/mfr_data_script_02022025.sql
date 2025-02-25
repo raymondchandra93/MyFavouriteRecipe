@@ -63,3 +63,10 @@ INSERT INTO recipeIngredient (recipe_id, ingredient_id) VALUES
 (9, 19),
 (10, 20),
 (10, 16);
+
+
+-- Insert sample users with BCrypt hashed passwords
+INSERT INTO user (user_uname, user_password) VALUES 
+('john_doe', '$2a$10$7QAMzZwLOeNcFkSkefNYSOn9dNPEtG.wtw0vJfCT.5pknnpFZ6WiC'), -- password: "password123"
+('alice_smith', '$2a$10$M32qkjEkOoweyBq2JoFpXe7bN6xT6D0CwP99FbwC8cXz6n5ULm9La'), -- password: "securePass!"
+('bob_jones', '$2a$10$5zMltZOkX5sHEyyCZLZ5c.O9D1bHBCzvc.cAi5AaNEA6AVtkZ70fa');  -- password: "mySecretPass"
