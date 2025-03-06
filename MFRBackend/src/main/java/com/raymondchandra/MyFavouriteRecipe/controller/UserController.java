@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raymondchandra.MyFavouriteRecipe.dto.UserDTO;
-import com.raymondchandra.MyFavouriteRecipe.model.User;
 import com.raymondchandra.MyFavouriteRecipe.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -40,14 +43,22 @@ public class UserController {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 	
-	// Get a user
+	// GET a user
+	@Operation(summary = "Getting a User", description = "Getting a user from the DB")
 	@GetMapping("/{id}")
-	public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+	public ResponseEntity<UserDTO> getUser(
+			@Parameter(description = "User ID to fetch the details", example = "1")
+			@PathVariable Long id
+	) {
 		
 		return ResponseEntity.ok(userService.getUser(id));
 	}
 	
 	// CREATE User
+	@Operation(summary = "Create User", description = "Creating a new user")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "201", description = "Successfully retrieved message") 
+	})
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
     	UserDTO user = userService.createUser(userDTO);
@@ -56,8 +67,14 @@ public class UserController {
     }
 
     // UPDATE User
+	@Operation(summary = "Update User", description = "Updating a user from the DB")
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> updateUser(
+    		@Parameter(description = "User ID to fetch the details", example = "1")
+    		@PathVariable Long id, 
+    		
+    		@RequestBody UserDTO userDTO
+    ) {
     	UserDTO updatedUser = userService.updateUser(id, userDTO);
     	
         return ResponseEntity.ok(updatedUser);

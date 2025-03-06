@@ -29,7 +29,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(request -> request
             		
             		// Permitting all request with this prefix
-            		.requestMatchers("/api/v1/public/**").permitAll()
+            		.requestMatchers(
+            			"/api/v1/public/**", 
+            			"/swagger-ui/**", 
+            			"/v3/api-docs/**",
+            			"/swagger", 
+            			"/api-docs"
+            		).permitAll()
 
 //         			.requestMatchers("/admin/**").hasRole("ADMIN")
 //    				.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
