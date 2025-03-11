@@ -3,6 +3,11 @@ package com.raymondchandra.MyFavouriteRecipe.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.raymondchandra.MyFavouriteRecipe.dto.UserDTO;
@@ -19,6 +24,9 @@ public class UserService {
 
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
+	private final AuthenticationManager authManager;
+	
+	private BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder(12);
 	
 	// Get all users as DTOs
 	public List<UserDTO> getAllUsers() {
@@ -40,13 +48,19 @@ public class UserService {
 	
 	// Create User
     public UserDTO createUser(UserDTO userDTO) {
+    	
+    	// Throw an exception if user is exist already
         if (userRepository.findByUsername(userDTO.getUserUname()).isPresent()) {
             throw new UserNotFoundException("Username already exists!");
         }
         
+        // Hash the password
+        String hashedPassword = passEncoder.encode(userDTO.getUserPassword());
+        
+        // Create a user object
         User user = new User();
         user.setUsername(userDTO.getUserUname());
-        user.setPassword(userDTO.getUserPassword()); // Ideally, encrypt the password
+        user.setPassword(hashedPassword); // Ideally, encrypt the password
         
         return userMapper.toUserDTO(userRepository.save(user));
     }
@@ -70,4 +84,20 @@ public class UserService {
         
         userRepository.deleteById(id);
     }
+    
+    // Verify when user login
+	public String verify(UserDTO userDTO) {
+		// We will do authentication
+		UsernamePasswordAuthenticationToken cred = 
+			new UsernamePasswordAuthenticationToken(userDTO.getUserUname(), userDTO.getUserPassword());
+		
+		Authentication authentication = 
+			authManager.authenticate(cred);
+		
+		// Check whether successfuly authenticated or not
+		if(authentication.isAuthenticated()) 
+			return "Success";
+		
+		return "Not Success";
+	}
 }

@@ -54,17 +54,19 @@ public class UserController {
 		return ResponseEntity.ok(userService.getUser(id));
 	}
 	
-	// CREATE User
+	// REGISTER User
 	@Operation(summary = "Create User", description = "Creating a new user")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "201", description = "Successfully retrieved message") 
 	})
-    @PostMapping
-    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+    @PostMapping("/register")
+    public ResponseEntity<UserDTO> register(@RequestBody UserDTO userDTO) {
     	UserDTO user = userService.createUser(userDTO);
         
         return ResponseEntity.ok(user);
     }
+
+
 
     // UPDATE User
 	@Operation(summary = "Update User", description = "Updating a user from the DB")
