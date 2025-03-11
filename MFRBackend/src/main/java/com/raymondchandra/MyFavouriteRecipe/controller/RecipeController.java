@@ -17,7 +17,7 @@ import com.raymondchandra.MyFavouriteRecipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/public/recipes")
+@RequestMapping("/api/v1/recipes")
 @RequiredArgsConstructor
 public class RecipeController {
 

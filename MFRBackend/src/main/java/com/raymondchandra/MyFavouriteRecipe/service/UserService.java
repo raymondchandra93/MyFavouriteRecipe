@@ -3,7 +3,6 @@ package com.raymondchandra.MyFavouriteRecipe.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,6 +24,7 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
 	private final AuthenticationManager authManager;
+	private final JWTService jwtService;
 	
 	private BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder(12);
 	
@@ -94,9 +94,10 @@ public class UserService {
 		Authentication authentication = 
 			authManager.authenticate(cred);
 		
-		// Check whether successfuly authenticated or not
+		// Check whether successfully authenticated or not
+		// If yes, generateToken
 		if(authentication.isAuthenticated()) 
-			return "Success";
+			return jwtService.generateToken(userDTO.getUserUname());
 		
 		return "Not Success";
 	}
