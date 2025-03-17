@@ -1,7 +1,11 @@
+import { BottomNavigation, Box, Typography } from "@mui/material";
+
 const Footer: React.FC = () => {
     return (
         <>
-            <h1>Hello, this is Footer</h1>
+            <Box sx={{ bgcolor: "#E53935" }}>
+                <Typography variant="body2" sx={{color: "white"}}>Copyright © Raymond Chandra 2025</Typography>
+            </Box>
         </>
     );
 };

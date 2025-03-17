@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Box, Button, Typography } from "@mui/material";
 
 const Home: React.FC = () => {
     // Use State
@@ -8,10 +8,12 @@ const Home: React.FC = () => {
     // Return
     return (
         <>
-            <h1>Hello, this is Home</h1>
-            <h2>Number is: {num}</h2>
-            <button onClick={() => setNum(num + 1)}>Increase</button>
-            <button onClick={() => setNum(num - 1)}>Decrease</button>
+            <Box>
+                <Typography variant="h4">Hello, this is Home</Typography>
+                <Typography variant="h6">Number is: <strong>{num}</strong></Typography>
+                <Button onClick={() => setNum(num + 1)}>Increase</Button>
+                <Button onClick={() => setNum(num - 1)}>Decrease</Button>
+            </Box>
         </>
     );
 };
