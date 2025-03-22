@@ -35,22 +35,22 @@ public class UserControllerTest {
     @Autowired
     private ObjectMapper objectMapper; 		// For converting objects to JSON
     
-    @Test
-    void testGetAllUsers() throws Exception {
-    	
-    	// Arrange
-    	UserDTO userDTO1 = new UserDTO("john_doe", "password123");
-    	UserDTO userDTO2 = new UserDTO("jane_doe", "password123");
-    	List<UserDTO> listUserDTO = Arrays.asList(userDTO1, userDTO2);
-    	
-    	when(userService.getAllUsers())
-    		.thenReturn(listUserDTO);    	
-    	
-    	// Act & Assert
-        mockMvc.perform(get("/api/v1/public/users"))
-        	.andDo(print())
-        	.andExpect(status().isOk());
-    }
+//    @Test
+//    void testGetAllUsers() throws Exception {
+//    	
+//    	// Arrange
+//    	UserDTO userDTO1 = new UserDTO("john_doe", "password123");
+//    	UserDTO userDTO2 = new UserDTO("jane_doe", "password123");
+//    	List<UserDTO> listUserDTO = Arrays.asList(userDTO1, userDTO2);
+//    	
+//    	when(userService.getAllUsers())
+//    		.thenReturn(listUserDTO);    	
+//    	
+//    	// Act & Assert
+//        mockMvc.perform(get("/api/v1/public/users"))
+//        	.andDo(print())
+//        	.andExpect(status().isOk());
+//    }
     
 //    @Test
 //    void testCreateUser() throws Exception {

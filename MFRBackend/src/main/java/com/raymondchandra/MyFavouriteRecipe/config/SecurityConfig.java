@@ -38,7 +38,10 @@ public class SecurityConfig {
 				.authorizeHttpRequests(request -> request
 
 						// Permitting all request with this prefix
-						.requestMatchers("/api/v1/public/**", "/swagger-ui/**", "/v3/api-docs/**", "/swagger",
+						.requestMatchers("/api/v1/public/**", 
+								"/swagger-ui/**", 
+								"/v3/api-docs/**", 
+								"/swagger",
 								"/api-docs")
 						.permitAll()
 

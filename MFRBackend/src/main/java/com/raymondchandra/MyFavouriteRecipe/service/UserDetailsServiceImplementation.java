@@ -10,8 +10,11 @@ import com.raymondchandra.MyFavouriteRecipe.model.User;
 import com.raymondchandra.MyFavouriteRecipe.model.UserPrincipal;
 import com.raymondchandra.MyFavouriteRecipe.repository.UserRepository;
 
+// This service implements the UserDetailsService
+// UserDetailsSercice has a method names loadUserByUsername()
+// this is use to fetch user details from DB
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImplementation implements UserDetailsService {
 	@Autowired
     private UserRepository userRepository;
 
