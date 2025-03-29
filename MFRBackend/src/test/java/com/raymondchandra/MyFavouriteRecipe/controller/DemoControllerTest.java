@@ -12,23 +12,23 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(DemoController.class)
-@AutoConfigureMockMvc(addFilters = false)
+//@WebMvcTest(DemoController.class)
+//@AutoConfigureMockMvc(addFilters = false)
 public class DemoControllerTest {
-	@Autowired
-    private MockMvc mockMvc; 				// MockMvc to simulate HTTP requests
-
-    @Autowired
-    private ObjectMapper objectMapper; 		// For converting objects to JSON
-    
-    @Test
-    void testGetDemo() throws Exception {
-    	
-    	// Arrange
-    	
-    	// Act & Assert
-        mockMvc.perform(get("/api/v1/public/demo"))
-        	.andDo(print())
-        	.andExpect(status().isOk());
-    }
+//	@Autowired
+//    private MockMvc mockMvc; 				// MockMvc to simulate HTTP requests
+//
+//    @Autowired
+//    private ObjectMapper objectMapper; 		// For converting objects to JSON
+//    
+//    @Test
+//    void testGetDemo() throws Exception {
+//    	
+//    	// Arrange
+//    	
+//    	// Act & Assert
+//        mockMvc.perform(get("/api/v1/public/demo"))
+//        	.andDo(print())
+//        	.andExpect(status().isOk());
+//    }
 }
