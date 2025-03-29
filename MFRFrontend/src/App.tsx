@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
+import Home from './pages/Login';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
 import { Route, Routes } from "react-router-dom";
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

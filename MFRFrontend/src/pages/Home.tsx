@@ -24,13 +24,7 @@ const Home: React.FC = () => {
     return (
         <>
             <Box>
-                <Typography variant="h4">Hello, this is Home</Typography>
-                <br></br>
-                <Typography variant="h6">Number is: <strong>{num}</strong></Typography>
-                <Button onClick={() => setNum(num + 1)}>Increase</Button>
-                <Button onClick={() => setNum(num - 1)}>Decrease</Button>
-                <br></br>
-                <Typography variant="h6">{demo}</Typography>
+                <Typography variant="h4">{demo}</Typography>
             </Box>
         </>
     );
