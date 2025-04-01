@@ -1,7 +1,9 @@
+import { Typography } from "@mui/material";
+
 const NotFound: React.FC = () => {
     return (
         <>
-            <h1>Hello, this is Not Found</h1>
+            <Typography variant="h1" sx={{flexGrow: 1}}>Oops 404! Page Not Found!</Typography>
         </>
     );
 };

@@ -1,11 +1,14 @@
 import { TextField, Button, Container, Card, CardContent, Typography } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
     // Use State
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate(); // For navigation
-  
+
+    // Declate Navigate - to make it short for userNavigate() hooks
+    const navigate = useNavigate();
 
     // Runs after the initial render
     const handleSubmit = (event: React.FormEvent) => {
@@ -14,22 +17,20 @@ const Login: React.FC = () => {
         
         // Mock authentication (Replace with real API call)
         if (email === "admin@example.com" && password === "password") {
-          alert("Login Successful!");
-          navigate("/dashboard"); // Redirect after login
+            alert("Login Successful!");
+            navigate("/");           // Redirect after login
         } else {
-          alert("Invalid email or password!");
+            alert("Invalid email or password!");
         }
     };
 
     // Return
     return (
         <>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Card variant="outlined" sx={{ mt: 10, p: 3, textAlign: "center" }}>
                     <CardContent>
-                        <Typography variant="h5" gutterBottom>
-                            Login
-                        </Typography>
+                        <Typography variant="h5" gutterBottom>Login</Typography>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 fullWidth

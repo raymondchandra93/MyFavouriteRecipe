@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     // Return
     return (
         <>
-            <Box>
+            <Box sx={{ marginTop: "100px" }}>
                 <Typography variant="h4">{demo}</Typography>
             </Box>
         </>

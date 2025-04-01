@@ -2,9 +2,9 @@ import { createTheme } from "@mui/material/styles";
 
 const themeRayOne = createTheme({
     palette: {
-        primary: { main: "#E53935" }, // Fiery Red
-        secondary: { main: "#FFC107" }, // Golden Yellow
-        text: { primary: "#424242" }, // Deep Charcoal
+        primary: { main: "#FFF" },       // White color
+        secondary: { main: "#ff4081" },     // Pink Color
+        text: { primary: "#424242" },       // Deep Charcoal
         background: { default: "#F5F5F5", paper: "#FFFFFF" }, // Light Grey
     },
     typography: {
@@ -14,13 +14,13 @@ const themeRayOne = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#FFC107', // Fiery Red
-                    color: '#000', // White text
+                    backgroundColor: '#32373c', // Fiery Red
+                    color: '#FFF', // White text
                     padding: '8px 16px',
                     borderRadius: '8px',
                     fontWeight: 'bold',
                     '&:hover': {
-                        backgroundColor: '#FFB300', // Accent color on hover
+                        backgroundColor: '#4e5b62', // Accent color on hover
                     },
                 },
             },

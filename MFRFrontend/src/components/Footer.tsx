@@ -3,8 +3,8 @@ import { BottomNavigation, Box, Typography } from "@mui/material";
 const Footer: React.FC = () => {
     return (
         <>
-            <Box sx={{ bgcolor: "#E53935" }}>
-                <Typography variant="body2" sx={{color: "white"}}>Copyright © Raymond Chandra 2025</Typography>
+            <Box sx={{ p: 3, m:6 }}>
+                <Typography variant="body1">Copyright © Raymond Chandra 2025</Typography>
             </Box>
         </>
     );
