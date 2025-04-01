@@ -15,7 +15,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/api/v1/public/demo")
 public class DemoController {
-	// Get test
 
 	@Operation(summary = "Get hello message", description = "Returns a simple greeting message.")
 	@ApiResponses(value = {
@@ -24,6 +23,6 @@ public class DemoController {
 	@GetMapping
 	public ResponseEntity<String> getDemo() {
 
-		return new ResponseEntity<>("Hello from Demo Controller", HttpStatus.OK);
+		return new ResponseEntity<>("Welcome to the My Favourite Recipe!", HttpStatus.OK);
 	}
 }
