@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { publicApi } from "../../src/api/api";
 
 const Home: React.FC = () => {
     // Use State
-    const [num, setNum] = useState(0);
     const [demo, setDemo] = useState("");
 
     // Runs after the initial render

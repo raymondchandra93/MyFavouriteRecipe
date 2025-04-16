@@ -1,4 +1,4 @@
-import { BottomNavigation, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Footer: React.FC = () => {
     return (
